@@ -19,6 +19,7 @@ for(const btn of operand_btns){
 			output.value = output.value + "" + e.target.value.replace(".","");
 		} else if(is_operator){
 			is_operator = false;
+			output.value = e.target.value;
 		} else{
 			output.value = output.value + "" + e.target.value;
 		}
@@ -59,5 +60,25 @@ for(const btn of operator_btns){
 				break
 			
 		}
+	})
+}
+
+
+const remove_active =() => {
+	for(const btn of operator_btns){
+		btn.classList.remove("active")
+	}
+}
+
+for(const btn of operator_btns){
+	btn.addEventListener("click",(e) => {
+		remove_active();
+		e.currentTarget.classList.add("active");
+	})
+}
+
+for(const btn of operand_btns){
+	btn.addEventListener("click",(e) => {
+		remove_active();
 	})
 }
